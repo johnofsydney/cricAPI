@@ -26,13 +26,14 @@ $(document).ready( function(){
   //   update(matchID)
   // });
 
-  $('#matchList').on('click touch touchstart', function (e) {
+  $('#matchList').on('click', function (e) {
     let matchID = e.target.id
-    $('h4').html(matchID)
+    // $('h4').html(matchID)
     $.get(`http://cricapi.com/api/cricketScore?apikey=${APIKEY}&unique_id=${matchID}`, function(matchdata) {
       // console.log(matchdata.description);
       // console.log($(`#${matchID}`).html());
-      $(`#${matchID}`).next().html(`<div>${matchdata.description}</div>`)
+      // $(`#${matchID}`).next().html(`<div>${matchdata.description}</div>`)
+      $('h4').html(`${matchdata.description}`)
 
     });
   });
