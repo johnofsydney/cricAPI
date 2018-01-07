@@ -2,7 +2,7 @@ console.log("connected");
 
 let APIKEY = "TXJrSO0rz7ST0LSBMfpANGP5EzR2"
 
-$.get(`http://cricapi.com/api/matches?apikey=${APIKEY}`, function(matchdata) {
+$.get(`https://cricapi.com/api/matches?apikey=${APIKEY}`, function(matchdata) {
   const matches = matchdata.matches;
   const intMatches = matches.filter(m => ((m.type === "Test") || (m.type === "ODI")) && (m.matchStarted === true))
 
@@ -19,7 +19,7 @@ $(document).ready( function(){
 
   $('#matchList').on('click touch', function (e) {
     let matchID = e.target.id
-    $.get(`http://cricapi.com/api/cricketScore?apikey=${APIKEY}&unique_id=${matchID}`, function(matchdata) {
+    $.get(`https://cricapi.com/api/cricketScore?apikey=${APIKEY}&unique_id=${matchID}`, function(matchdata) {
       $('h4').html(`${matchdata.description}`)
     });
   });
