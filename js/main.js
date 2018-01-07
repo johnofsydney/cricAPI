@@ -9,40 +9,18 @@ $.get(`http://cricapi.com/api/matches?apikey=${APIKEY}`, function(matchdata) {
   $.each(intMatches, function (index, value) {
     matchHeadline = `<div class="matchInfo ${value['type']}" id="${value['unique_id']}">${value['team-1']} vs ${value['team-2']}</div><div class="scores"></div>`
     $('#matchList').append(matchHeadline)
-
-    $.get(`https://cricapi.com/api/cricketScore?apikey=${APIKEY}&unique_id=${matchID}`, function(matchdata) {
-      // console.log(matchdata.description);
-      // console.log($(`#${matchID}`).html());
-      $(`#${matchID}`).next().html(`<div>${matchdata.description}</div>`)
-      // $('h4').html(`${matchdata.description}`)
-
-    });
-
   })
 });
 
-const update = function (matchID) {
-
-}
 
 
 $(document).ready( function(){
   console.log("ready");
 
-  // $('#matchList').on('click', function (e) {
-  //   let matchID = e.target.id
-  //   update(matchID)
-  // });
-
   $('#matchList').on('click touch', function (e) {
     let matchID = e.target.id
-    // $('h4').html(matchID)
     $.get(`http://cricapi.com/api/cricketScore?apikey=${APIKEY}&unique_id=${matchID}`, function(matchdata) {
-      // console.log(matchdata.description);
-      // console.log($(`#${matchID}`).html());
-      // $(`#${matchID}`).next().html(`<div>${matchdata.description}</div>`)
       $('h4').html(`${matchdata.description}`)
-
     });
   });
 
