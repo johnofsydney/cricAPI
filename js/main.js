@@ -7,8 +7,9 @@ $.get(`https://cricapi.com/api/matches?apikey=${APIKEY}`, function(matchdata) {
   const intMatches = matches.filter(m => ((m.type === "Test") || (m.type === "ODI")) && (m.matchStarted === true))
 
   $.each(intMatches, function (index, value) {
-    matchHeadline = `<div class="matchInfo ${value['type']}" id="${value['unique_id']}">${value['team-1']} vs ${value['team-2']}</div>`
+    matchHeadline = `<div class="matchInfo ${value['type']}" id="${value['unique_id']}">${value['team-1']} vs ${value['team-2']}</div><div class="scores"></div>`
     $('#matchList').append(matchHeadline)
+
   })
 });
 
@@ -26,7 +27,9 @@ $(document).ready( function(){
 
     $.get(`http://cricapi.com/api/cricketScore?apikey=${APIKEY}&unique_id=${matchID}`, function(matchdata) {
       console.log(matchdata.description);
-      $(`#${matchID}`).append(`<div>${matchdata.description}</div>`)
+      console.log($(`#${matchID}`).html());
+      $(`#${matchID}`).next().html(`<div>${matchdata.description}</div>`)
+
 
     });
 
