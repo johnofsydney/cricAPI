@@ -28,7 +28,7 @@ $(document).ready( function(){
 
   $('#matchList').on('click touch touchstart', function (e) {
     let matchID = e.target.id
-    $('h4').html("bob")
+    $('h4').html(matchID)
     $.get(`http://cricapi.com/api/cricketScore?apikey=${APIKEY}&unique_id=${matchID}`, function(matchdata) {
       // console.log(matchdata.description);
       // console.log($(`#${matchID}`).html());
