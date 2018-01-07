@@ -21,13 +21,14 @@ const update = function (matchID) {
 $(document).ready( function(){
   console.log("ready");
 
-  $('#matchList').on('click', function (e) {
-    let matchID = e.target.id
-    update(matchID)
-  });
+  // $('#matchList').on('click', function (e) {
+  //   let matchID = e.target.id
+  //   update(matchID)
+  // });
 
   $('#matchList').on('click touch touchstart', function (e) {
     let matchID = e.target.id
+    $('h4').html("bob")
     $.get(`http://cricapi.com/api/cricketScore?apikey=${APIKEY}&unique_id=${matchID}`, function(matchdata) {
       // console.log(matchdata.description);
       // console.log($(`#${matchID}`).html());
