@@ -13,27 +13,27 @@ $.get(`https://cricapi.com/api/matches?apikey=${APIKEY}`, function(matchdata) {
   })
 });
 
+const update = function (matchID) {
+
+}
 
 
 $(document).ready( function(){
   console.log("ready");
 
   $('#matchList').on('click', function (e) {
-
     let matchID = e.target.id
+    update(matchID)
+  });
 
+  $('#matchList').on('click touch', function (e) {
+    let matchID = e.target.id
     $.get(`http://cricapi.com/api/cricketScore?apikey=${APIKEY}&unique_id=${matchID}`, function(matchdata) {
-      console.log(matchdata.description);
-      console.log($(`#${matchID}`).html());
+      // console.log(matchdata.description);
+      // console.log($(`#${matchID}`).html());
       $(`#${matchID}`).next().html(`<div>${matchdata.description}</div>`)
 
-
     });
+  });
 
-
-
-
-
-
-  })
 })
