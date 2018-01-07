@@ -19,12 +19,8 @@ $(document).ready( function(){
   console.log("ready");
 
   $('#matchList').on('click', function (e) {
-    $('h4').html("boob")
-    // console.log(e.target);
-    // console.log(e.target.tagName);
-    // console.log(e.target.id);
+
     let matchID = e.target.id
-    // $(`#${matchID}`).append('<div>isiascij</div>')
 
     $.get(`http://cricapi.com/api/cricketScore?apikey=${APIKEY}&unique_id=${matchID}`, function(matchdata) {
       console.log(matchdata.description);
