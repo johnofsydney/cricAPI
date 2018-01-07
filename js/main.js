@@ -19,6 +19,7 @@ $(document).ready( function(){
   console.log("ready");
 
   $('#matchList').on('click', function (e) {
+    $('h4').html("boob")
     // console.log(e.target);
     // console.log(e.target.tagName);
     // console.log(e.target.id);
